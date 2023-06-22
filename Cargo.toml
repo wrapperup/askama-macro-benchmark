@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "askama-bench-app",
+    "askama-bench-lib",
+]

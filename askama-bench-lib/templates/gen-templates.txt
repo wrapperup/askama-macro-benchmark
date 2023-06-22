@@ -1,0 +1,22 @@
+{%- let max = 101 -%}
+
+use askama::Template;
+{% for i in (1..max) %}
+#[derive(Template)]
+#[template(path = "index_{{ "{:0>3}"|format(i) }}.html")]
+pub struct Index{{ "{:0>3}"|format(i) }} {
+    pub test: String,
+}
+{% endfor %}
+pub fn render_templates() {
+{%- for i in (1..max) %}
+    println!(
+        "{}",
+        Index{{ "{:0>3}"|format(i) }} {
+            test: "Hi".to_string()
+        }
+        .render()
+        .unwrap()
+    );
+{% endfor -%}
+}
